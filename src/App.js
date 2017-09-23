@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import './App.css';
+import styled from 'styled-components';
+
+const Wrapper = styled.section`
+  max-width: 1024px;
+`; // styled-components example
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        hi
-      </div>
+      <Wrapper>
+        <h1>Hello World!</h1>
+      </Wrapper>
     );
   }
 }
