@@ -3,6 +3,7 @@ import Layout from '../layouts/main';
 import Dropzone from 'react-dropzone';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import Button from '../components/Button';
 
 const DropzoneWrapper = styled.div`
   .dropzone {
@@ -69,8 +70,8 @@ class Report extends Component {
 
         {!this.state.handlingFiles && !this.state.thankYou &&
           <div>
-            <h2>Report safe persons!</h2>
-            <p>We will detect and match any detectable faces and notify users that are trying to find them!</p>
+            <h2>Report SAFE person(s)</h2>
+            <p>We will detect and match any detectable faces in your pictures and notify users that are trying to find them!</p>
 
             <DropzoneWrapper>
               <Dropzone
@@ -99,8 +100,10 @@ class Report extends Component {
               { this.state.files.map(f => <img key={f.name} src={f.preview} alt={f.name} />) }
             </Previews>
           </div>}
+          <Button>
+            <Link to="/">Go back</Link>
+          </Button>
 
-          <p><Link to="/">Go back</Link></p>
       </Layout>
     );
   }
