@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Layout from '../layouts/main';
 
 const Wrapper = styled.section`
-  max-width: 1024px;
+  color: red;
 `; // styled-components example
 
 export default () => (
