@@ -5,9 +5,7 @@ import Home from './containers/Home';
 import Find from './containers/Find';
 import PhotoUpload from './containers/PhotoUpload';
 import Results from './containers/Results';
-
 import Report from './containers/Report';
-import Find from './containers/Find';
 
 class App extends Component {
   render() {
