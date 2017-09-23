@@ -40,15 +40,10 @@ export default () => (
 
       <Button>
         <Link to='/report-person'>
-          Report person
+          Report person(s)
         </Link>
       </Button>
 
-      <Button>
-        <Link to='/view-lists'>
-          View lists
-        </Link>
-      </Button>
     </MenuWrapper>
   </Layout>
 );
