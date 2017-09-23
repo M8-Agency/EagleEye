@@ -33,7 +33,7 @@ export default () => (
 
     <MenuWrapper>
       <Button>
-        <Link to='/find-person'>
+        <Link to='/find'>
           Find Person
         </Link>
       </Button>
