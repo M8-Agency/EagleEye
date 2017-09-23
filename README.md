@@ -33,6 +33,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Contributors
 
+- Mohamed Dhia Soussi @modsoussi
+- Antonio Rodriguez Martinez @antoniwan
 - John Santiago
 - Sergio Barrientos
 - Rosalyn Otero
