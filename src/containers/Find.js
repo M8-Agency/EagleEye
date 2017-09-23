@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Layout from '../layouts/main';
 
@@ -28,6 +29,11 @@ const TextArea = styled.textarea`
   }
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
+
 class Pickers extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -41,7 +47,7 @@ class Pickers extends React.Component {
     return(
       <div>
         <Button>
-          <b>Use Photo</b>
+          <StyledLink to="/find/photo-upload"><b>Use Photo</b></StyledLink>
         </Button>
         <InputsDiv>
           <Input type="text" placeholder="First Name"/>
