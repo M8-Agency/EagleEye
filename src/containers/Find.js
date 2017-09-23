@@ -3,42 +3,15 @@ import styled from 'styled-components';
 
 import Layout from '../layouts/main';
 
+import b from '../components/Button';
+import i from '../components/Input';
+
 const InputHeight = "50px";
 const TextAreaHeight = "75px";
 
-const Button = styled.button`
-  border: 2px solid blue;
-  border-radius: 10px;
-  width: 95%;
-  margin: auto;
-  height: ${InputHeight};
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: inherit;
-  font-size: 12pt;
-  color: blue;
-  
-  &:focus, &:active {
-    outline: none;
-  }
-`;
+const Button = b(InputHeight);
 
-const Input = styled.input`
-  height: ${InputHeight};
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: 1px solid #ddd;
-  margin: 7px auto;
-  width: 95%;
-  -webkit-padding-start: 15px;
-  font-size: 12pt;
-
-  &:focus {
-    outline: none;
-  }
-`;
+const Input = i(InputHeight);
 
 const TextArea = styled.textarea`
   -webkit-appearance: none;
