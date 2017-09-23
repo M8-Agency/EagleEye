@@ -92,7 +92,7 @@ class Report extends Component {
 
         {this.state.thankYou &&
           <div>
-            <h3>Thank you for your contribution!</h3>
+            <h3>Thank you for contributing!</h3>
             <p>We've uploaded the photo(s) below. We will notify any users looking for the detected persons immediately. <a onClick={this.reset.bind(this)}><strong>Click here to upload more photos</strong></a>.</p>
             <Previews>
               { this.state.files.map(f => <img key={f.name} src={f.preview} alt={f.name} />) }
