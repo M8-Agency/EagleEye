@@ -7,7 +7,13 @@ import b from '../components/Button';
 
 const ButtonHeight = "50px";
 
-const Button = b(ButtonHeight);
+const Button = styled(b(ButtonHeight))`
+  &.disabled {
+    color: #b0bfff;
+    border-color: #b0bfff;
+  }
+`;
+
 
 const UploadInput = styled.input`
   opacity: 0;
@@ -46,6 +52,30 @@ const ImageWrapper = styled.div`
 class UploadSection extends React.Component {
   constructor(...args){
     super(...args);
+
+    this.state = {
+      uploaded: false
+    };
+  }
+
+  updateImageDisplay(uploader){
+    let file = uploader.files[0];
+    console.log(file);
+    let imageURL = window.URL.createObjectURL(file);
+    this.setState({
+      imageURL: imageURL,
+      uploaded: true
+    });
+  }
+
+  componentDidMount(){
+    let uploader = document.querySelector('input#ImageUpload');
+    uploader.addEventListener('change', this.updateImageDisplay.bind(this, uploader));
+  }
+
+  componentWillUmount(){
+    let uploader = document.querySelector('input#ImageUpload');
+    uploader.removeEventListener('change', this.updateImageDisplay.bind(this, uploader));
   }
 
   render(){
@@ -56,12 +86,12 @@ class UploadSection extends React.Component {
     return(
       <Wrapper>
         <ImageWrapper>
-         <ImageThumbnail src="" alt="Thumbnail" />
+         <ImageThumbnail id="ImageThumbnail" src={this.state.imageURL} alt="Thumbnail" />
         </ImageWrapper>
         <Wrapper>
           <ButtonLabel htmlFor="ImageUpload">Upload</ButtonLabel>
           <UploadInput id="ImageUpload" type="file" accept="image/*" placeholder="Upload"/>
-          <Button>Find</Button>
+          <Button className={this.state.uploaded ? "" : "disabled"}>Find</Button>
         </Wrapper>
       </Wrapper>
     )
