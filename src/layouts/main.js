@@ -18,6 +18,9 @@ const Container = styled.div`
     text-align: center;
     line-height: 2rem;
   }
+  h3 {
+    text-align: center;
+  }
 `;
 
 export default ({
