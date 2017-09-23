@@ -11,15 +11,11 @@ const Container = styled.div`
     text-align: center;
     line-height: 1.45rem;
   }
-  h1 {
+  h1, h2, h3, h4, h5 {
     text-align: center;
   }
   h2 {
-    text-align: center;
     line-height: 2rem;
-  }
-  h3 {
-    text-align: center;
   }
 `;
 
