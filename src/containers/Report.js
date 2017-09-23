@@ -69,8 +69,8 @@ class Report extends Component {
 
         {!this.state.handlingFiles && !this.state.thankYou &&
           <div>
-            <h2>Report safe persons!</h2>
-            <p>We will detect and match any detectable faces and notify users that are trying to find them!</p>
+            <h2>Report SAFE person(s)</h2>
+            <p>We will detect and match any detectable faces in your pictures and notify users that are trying to find them!</p>
 
             <DropzoneWrapper>
               <Dropzone
@@ -101,6 +101,7 @@ class Report extends Component {
           </div>}
 
           <p><Link to="/">Go back</Link></p>
+
       </Layout>
     );
   }

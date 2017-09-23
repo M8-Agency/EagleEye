@@ -3,35 +3,21 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import Layout from '../layouts/main';
-
-import b from '../components/Button';
+import Button from '../components/Button';
 import i from '../components/Input';
 
 const InputHeight = "50px";
 const TextAreaHeight = "75px";
-
-const Button = b(InputHeight);
-
 const Input = i(InputHeight);
 
 const TextArea = styled.textarea`
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
-  height: ${TextAreaHeight};
   border: 1px solid #ddd;
-  padding: 15px 0 0 15px;
-  font-size: 12pt;
-  width: 95%;
-
-  &:focus {
-    outline: none;
-  }
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: inherit;
+  padding: 15px;
+  font-size: 1rem;
+  width: 320px;
+  display: block;
+  margin: 0 auto;
 `;
 
 const FIRST = "firstName";
@@ -40,6 +26,7 @@ const LOCATION = "location";
 const NEEDS = "needs";
 
 class Pickers extends React.Component {
+
   constructor(props, context) {
     super(props, context);
 
@@ -52,24 +39,36 @@ class Pickers extends React.Component {
     this.setState(data);
   }
 
+  usePhoto() {
+    console.log('use a photo');
+  }
+
   render(){
 
     const data = this.state;
 
     return(
       <div>
-        <Button>
-          <StyledLink to="/find/photo-upload"><b>Use Photo</b></StyledLink>
+
+        <h2>Find a person</h2>
+
+        <Button onClick={this.usePhoto.bind(this)}>
+          Use a photo
         </Button>
-        <div style={{margin: "15px 0"}}>
-          <Input onChange={this.inputChange.bind(this, FIRST)} type="text" placeholder="First Name" value={data[FIRST]}/>
-          <Input onChange={this.inputChange.bind(this, LAST)} type="text" placeholder="Last Name" value={data[LAST]}/>
-          <Input onChange={this.inputChange.bind(this, LOCATION)} type="text" placeholder="Location" value={data[LOCATION]}/>
-          <TextArea onChange={this.inputChange.bind(this, NEEDS)} type="text" placeholder="Special Needs" value={data[NEEDS]}/>
+
+          <h5>Add optional details below</h5>
+
+        <div>
+          <Input onChange={this.inputChange.bind(this, FIRST)} type="text" placeholder="First name" value={data[FIRST]}/>
+          <Input onChange={this.inputChange.bind(this, LAST)} type="text" placeholder="Last name" value={data[LAST]}/>
+          <Input onChange={this.inputChange.bind(this, LOCATION)} type="text" placeholder="Last known location" value={data[LOCATION]}/>
+          <TextArea onChange={this.inputChange.bind(this, NEEDS)} type="text" placeholder="Special needs or important info" value={data[NEEDS]}/>
         </div>
+
         <Button>
-          <b>Find</b>
-        </Button> 
+          Find
+        </Button>
+
       </div>
     )
   }

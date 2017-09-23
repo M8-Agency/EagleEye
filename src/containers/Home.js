@@ -2,30 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Layout from '../layouts/main';
-
+import Button from '../components/Button';
 
 const MenuWrapper = styled.div`
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   width: 100%;
   margin-top: 4rem;
-`;
-
-const Button = styled.button`
-  padding: 20px 60px;
-  background: #5683B6;
-  border-radius: 10px;
-  margin-bottom: 1.45rem;
-  border: none;
-
-  a {
-    color: #FFFFFF;
-    text-decoration: none;
-    font-size: 1.45rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
 `;
 
 export default () => (
@@ -39,7 +24,7 @@ export default () => (
       </Button>
 
       <Button>
-        <Link to='/report-person'>
+        <Link to='/report'>
           Report person(s)
         </Link>
       </Button>
