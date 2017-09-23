@@ -8,6 +8,7 @@ const Navigation = styled.nav`
   align-items: center;
   justify-content: center;
   padding: 0 0.8rem;
+  border-bottom: 4px solid #CFCFCF;
 `;
 
 const StyledLink = styled(Link)`
@@ -19,8 +20,10 @@ const StyledLink = styled(Link)`
 const Title = styled.h1`
   font-weight: 100;
   font-size: 1.2rem;
+  letter-spacing: 1px;
   b {
     font-weight: 500;
+    letter-spacing: 0px;
   }
 `;
 
