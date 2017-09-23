@@ -7,6 +7,17 @@ const Container = styled.div`
   max-width: 1024px;
   padding: 0 0.8rem;
   margin: 0 auto;
+  p {
+    text-align: center;
+    line-height: 1.45rem;
+  }
+  h1 {
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+    line-height: 2rem;
+  }
 `;
 
 export default ({
