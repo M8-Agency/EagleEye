@@ -6,8 +6,9 @@ import Button from '../components/Button';
 
 const MenuWrapper = styled.div`
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   width: 100%;
   margin-top: 4rem;
 `;
@@ -23,7 +24,7 @@ export default () => (
       </Button>
 
       <Button>
-        <Link to='/report-person'>
+        <Link to='/report'>
           Report person(s)
         </Link>
       </Button>
