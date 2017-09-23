@@ -15,10 +15,7 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" component={Home} />
-<<<<<<< HEAD
           <Route exact path="/report-person" component={Report} />
-=======
->>>>>>> started on Find
           <Route exact path="/find" component={Find} />
           <Route exact path="/find/photo-upload" component={PhotoUpload} />
           <Route exact path="/find/results" component={Results} />
