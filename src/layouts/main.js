@@ -17,6 +17,10 @@ const Container = styled.div`
   h2 {
     line-height: 2rem;
   }
+  a {
+    color: black;
+    text-decoration: underline;
+  }
 `;
 
 export default ({
