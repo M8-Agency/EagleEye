@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Layout from '../layouts/main';
 import Dropzone from 'react-dropzone';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const DropzoneWrapper = styled.div`
   .dropzone {
@@ -99,6 +100,7 @@ class Report extends Component {
             </Previews>
           </div>}
 
+          <p><Link to="/">Go back</Link></p>
       </Layout>
     );
   }
