@@ -34,27 +34,39 @@ const StyledLink = styled(Link)`
   color: inherit;
 `;
 
+const FIRST = "firstName";
+const LAST = "lastName";
+const LOCATION = "location";
+const NEEDS = "needs";
+
 class Pickers extends React.Component {
   constructor(props, context) {
     super(props, context);
+
+    this.state = {};
+  }
+
+  inputChange(key, event){
+    let data = this.state;
+    data[key] = event.target.value;
+    this.setState(data);
   }
 
   render(){
-    const InputsDiv = styled.div`
-      margin: 15px 0;
-    `;
+
+    const data = this.state;
 
     return(
       <div>
         <Button>
           <StyledLink to="/find/photo-upload"><b>Use Photo</b></StyledLink>
         </Button>
-        <InputsDiv>
-          <Input type="text" placeholder="First Name"/>
-          <Input type="text" placeholder="First Name"/>
-          <Input type="text" placeholder="Location"/>
-          <TextArea type="text" placeholder="Special Needs"/>
-        </InputsDiv>
+        <div style={{margin: "15px 0"}}>
+          <Input onChange={this.inputChange.bind(this, FIRST)} type="text" placeholder="First Name" value={data[FIRST]}/>
+          <Input onChange={this.inputChange.bind(this, LAST)} type="text" placeholder="Last Name" value={data[LAST]}/>
+          <Input onChange={this.inputChange.bind(this, LOCATION)} type="text" placeholder="Location" value={data[LOCATION]}/>
+          <TextArea onChange={this.inputChange.bind(this, NEEDS)} type="text" placeholder="Special Needs" value={data[NEEDS]}/>
+        </div>
         <Button>
           <b>Find</b>
         </Button> 
