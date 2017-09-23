@@ -3,7 +3,6 @@ import Layout from '../layouts/main';
 import Dropzone from 'react-dropzone';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Button from '../components/Button';
 
 const DropzoneWrapper = styled.div`
   .dropzone {
@@ -100,9 +99,8 @@ class Report extends Component {
               { this.state.files.map(f => <img key={f.name} src={f.preview} alt={f.name} />) }
             </Previews>
           </div>}
-          <Button>
-            <Link to="/">Go back</Link>
-          </Button>
+
+          <p><Link to="/">Go back</Link></p>
 
       </Layout>
     );
