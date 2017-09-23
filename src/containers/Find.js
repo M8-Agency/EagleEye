@@ -12,19 +12,12 @@ const Input = i(InputHeight);
 
 const TextArea = styled.textarea`
   appearance: none;
-  height: ${TextAreaHeight};
   border: 1px solid #ddd;
-  padding: 15px 0 0 15px;
-  font-size: 12pt;
-  width: 95%;
-  &:focus {
-    outline: none;
-  }
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: inherit;
+  padding: 15px;
+  font-size: 1rem;
+  width: 320px;
+  display: block;
+  margin: 0 auto;
 `;
 
 const FIRST = "firstName";
@@ -63,7 +56,7 @@ class Pickers extends React.Component {
           Use a photo
         </Button>
 
-          <h5>Add optional details</h5>
+          <h5>Add optional details below</h5>
 
         <div>
           <Input onChange={this.inputChange.bind(this, FIRST)} type="text" placeholder="First name" value={data[FIRST]}/>
