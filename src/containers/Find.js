@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Layout from '../layouts/main';
 import Button from '../components/Button';
 import i from '../components/Input';
 import Dropzone from 'react-dropzone';
+import GoX from 'react-icons/lib/go/x';
+import { Route } from 'react-router-dom';
 
 const Input = i();
 const FIRST = "firstName";
@@ -12,22 +14,53 @@ const LAST = "lastName";
 const LOCATION = "location";
 const NEEDS = "needs";
 const TextArea = styled.textarea`
-appearance: none;
-border: 1px solid #ddd;
-padding: 15px;
-font-size: 1rem;
-width: 320px;
-display: block;
-margin: 0 auto;
+  appearance: none;
+  border: 1px solid #ddd;
+  padding: 15px;
+  font-size: 1rem;
+  width: 320px;
+  display: block;
+  margin: 0 auto;
+`;
+
+const PhotoPreview = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p {
+    font-size: 0.85rem;
+    line-height: 1rem;
+    color: black;
+    font-style: italic;
+    padding: 0px 10px;
+  }
+  img {
+    display: block;
+    max-height: 200px;
+    max-width: 200px;
+  }
+  span {
+    background: #CA4272;
+    display: block;
+    padding: 5px 10px;
+    color: white;
+    margin-top: 0.5rem;
+  }
 `;
 
 let dropzoneRef;
 
-class Pickers extends React.Component {
+class Finder extends Component {
 
   constructor(props, context) {
     super(props, context);
-    this.state = {};
+    this.state = {
+      handlingPhoto: false,
+      photoReadyForSubmit: false,
+      files: [],
+      form: null,
+    };
   }
 
   inputChange(key, event){
@@ -37,15 +70,37 @@ class Pickers extends React.Component {
   }
 
   usePhoto(e) {
-    console.log('use a photo', e);
     dropzoneRef.open();
   }
 
-  onDrop(accepted, rejected) {
-    console.log(accepted);
+  resetPhoto(e) {
+    this.setState({
+      handlingPhoto: false,
+      photoReadyForSubmit: false,
+      files: [],
+    });
   }
 
-  render(){
+  onDrop(accepted, rejected) {
+    console.log(accepted, rejected);
+    this.setState({
+      handlingPhoto: false,
+      photoReadyForSubmit: true,
+      files: accepted,
+    });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log('Handle submit!');
+    // send the form to the server
+    // check the picture
+    // for now, let's send users to the results view
+    // with the state as stub data
+    this.props.history.push('/find-results', this.state);
+  }
+
+  render() {
     const data = this.state;
 
     return(
@@ -53,11 +108,25 @@ class Pickers extends React.Component {
 
         <h2>Find a person</h2>
 
-        <Dropzone hidden ref={(node) => { dropzoneRef = node; }} onDrop={this.onDrop.bind(this)} />
+        {!this.state.handlingPhoto && !this.state.photoReadyForSubmit &&
+        <div>
+          <Dropzone
+            hidden
+            ref={(node) => { dropzoneRef = node; }}
+            onDrop={this.onDrop.bind(this)}
+            accept="image/jpeg, image/png"
+          />
+          <Button onClick={this.usePhoto}>
+            Use a photo
+          </Button>
+        </div>}
 
-        <Button onClick={this.usePhoto}>
-          Use a photo
-        </Button>
+        {!this.state.handlingPhoto && this.state.photoReadyForSubmit &&
+        <PhotoPreview>
+          <p>Please confirm correct orientation. Faces with more than 30 degrees of tilt will be hard to recognize!</p>
+          { this.state.files.map(f => <img key={f.name} src={f.preview} alt={f.name} />) }
+          <span onClick={this.resetPhoto.bind(this)}><GoX /> Repick photo</span>
+        </PhotoPreview>}
 
         <h5>Add optional details below</h5>
 
@@ -68,7 +137,7 @@ class Pickers extends React.Component {
           <TextArea onChange={this.inputChange.bind(this, NEEDS)} type="text" placeholder="Special needs or important info" value={data[NEEDS]}/>
         </div>
 
-        <Button>
+        <Button onClick={this.handleSubmit.bind(this)}>
           Find
         </Button>
 
@@ -81,7 +150,9 @@ class Pickers extends React.Component {
 export default () => (
   <Layout>
     <section>
-      <Pickers />
+      <Route render={({ history }) => (
+        <Finder history={history} />
+      )} />
     </section>
   </Layout>
-)
+);
