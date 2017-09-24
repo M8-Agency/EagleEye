@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Layout from '../layouts/main';
@@ -6,6 +6,7 @@ import Button from '../components/Button';
 import i from '../components/Input';
 import Dropzone from 'react-dropzone';
 import GoX from 'react-icons/lib/go/x';
+import { Route } from 'react-router-dom';
 
 const Input = i();
 const FIRST = "firstName";
@@ -50,7 +51,7 @@ const PhotoPreview = styled.div`
 
 let dropzoneRef;
 
-class Finder extends React.Component {
+class Finder extends Component {
 
   constructor(props, context) {
     super(props, context);
@@ -95,10 +96,11 @@ class Finder extends React.Component {
     // send the form to the server
     // check the picture
     // for now, let's send users to the results view
-
+    // with the state as stub data
+    this.props.history.push('/find-results', this.state);
   }
 
-  render(){
+  render() {
     const data = this.state;
 
     return(
@@ -148,7 +150,9 @@ class Finder extends React.Component {
 export default () => (
   <Layout>
     <section>
-      <Finder />
+      <Route render={({ history }) => (
+        <Finder history={history} />
+      )} />
     </section>
   </Layout>
-)
+);
