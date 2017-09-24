@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const CardWrapper = styled.div`
@@ -40,17 +41,7 @@ const Title = styled.div`
   margin-right: 5px;
 `;
 
-export default class extends React.Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    location: PropTypes.string,
-    specialNeeds: PropTypes.string,
-    image: PropTypes.image
-  }
-
-  constructor(...args){
-    super(...args);
-  }
+class ResultCard extends Component {
 
   render(){
     return(
@@ -76,3 +67,12 @@ export default class extends React.Component {
     )
   }
 }
+
+ResultCard.PropTypes = {
+  name: PropTypes.string.isRequired,
+  location: PropTypes.string,
+  specialNeeds: PropTypes.string,
+  image: PropTypes.image
+};
+
+export default ResultCard;
